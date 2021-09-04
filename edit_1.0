@@ -1,0 +1,91 @@
+This is the error message I get:
+
+
+/home/ccuser/workspace/javascript_101_Unit_3/Unit_3/rockPaperScissors.js:41
+  if (userChoice === 'paper') {
+      ^
+
+ReferenceError: userChoice is not defined
+    at Object.<anonymous> (/home/ccuser/workspace/javascript_101_Unit_3/Unit_3/rockPaperScissors.js:41:7)
+    at Module._compile (module.js:571:32)
+    at Object.Module._extensions..js (module.js:580:10)
+    at Module.load (module.js:488:32)
+    at tryModuleLoad (module.js:447:12)
+    at Function.Module._load (module.js:439:3)
+    at Module.runMain (module.js:605:10)
+    at run (bootstrap_node.js:427:7)
+    at startup (bootstrap_node.js:151:9)
+    at bootstrap_node.js:542:3
+
+
+This is my R-P-S code:
+
+
+// write users choice function
+// write computer's choice function
+// compare choices, choose winner
+// display the results
+
+
+const getUserChoice = userInput => {
+userInput = userInput.toLowerCase(); 
+if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
+      return userInput;
+ } else {
+ console.log("You have typed an incorrect response. Please type rock, paper or scissors.");
+ }
+};
+
+const getComputerChoice = () => {
+  const randomNumber = Math.floor(Math.random() * 3);
+switch (randomNumber) {
+  case 0: 
+  return 'rock';
+  case 1: 
+   return 'paper';
+  case 2: 
+ return 'scissors'; 
+} 
+};
+
+const determineWinner = (userChoice, computerChoice) => {
+  if (userChoice === computerChoice) {
+  return "The game is a tie.";
+  } 
+  if (userChoice === 'rock') {
+    if (computerChoice === 'paper') {
+  return "Sorry, the computer won.";
+    } else {
+    return "Congratulations, you won.";
+    } 
+  }
+  };
+  
+  if (userChoice === 'paper') {
+    if (computerChoice === 'scissors') {
+      return "Sorry, the computer won.";
+    } else {
+      return "Congratulations, you won.";
+    }
+  }; 
+  
+  if (userChoice === 'scissors') {
+    if (computerChoice === 'rock') {
+      return "Sorry, the computer won.";
+    } else {
+      return "Congratulations, you won.";
+    }
+};
+console.log(determineWinner('rock', 'scissors'));
+
+
+const playGame = () => {
+const userChoice = getUserChoice('paper');
+const computerChoice = getComputerChoice();
+console.log("You played " + userChoice);
+console.log("Computer played " + computerChoice);
+console.log(determineWinner());
+}; 
+
+
+playGame();
